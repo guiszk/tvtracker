@@ -46,7 +46,8 @@ now = now.strftime('%a %b %d, %Y')
 
 log.seek(0)
 for line in log:
-    date = line.strip().split(':')[-2]
+    show, name, date, eid = line.strip().split(':')
+    show = show.replace('-', ' ')
     if(date == now):
-        sendalert(show.replace('-', ' '), eid + ' ' + name)
+        sendalert(show, eid + ' ' + name)
 log.close()
